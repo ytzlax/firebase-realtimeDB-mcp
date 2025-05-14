@@ -1,6 +1,6 @@
 import { FastMCP } from "fastmcp";
 import { z } from "zod";
-import { FirebaseApp } from "./firebaseApp";
+import { FirebaseApp } from "./firebaseApp.js";
 
 export class FirebaseRealtimeDbMcp {
     private server: FastMCP;
@@ -43,6 +43,31 @@ export class FirebaseRealtimeDbMcp {
             execute: async (args) => {
                 const res = await this.firebaseApp.listTopLevelCollections();
                 return JSON.stringify(res as any);
+            },
+        });
+
+        this.server.addTool({
+            name: "search_doc",
+            description: "Search doc",
+            parameters: z.object({
+                value: z.string()
+            }),
+            execute: async (args) => {
+                const res = await this.firebaseApp.searchValueInRealtimeDB(args.value);
+                return JSON.stringify(res as any);
+            },
+        });
+
+        this.server.addTool({
+            name: "add_doc",
+            description: "Add new document",
+            parameters: z.object({
+                collectionName: z.string(),
+                value: z.object({})
+            }),
+            execute: async (args) => {
+                const res = await this.firebaseApp.addDocumentToCollection(args.collectionName, args.value);
+                return "Added";
             },
         });
 
