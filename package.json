@@ -1,0 +1,51 @@
+{
+  "name": "firebase-realtimedb-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for firebase realtime DB",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "npm run build & npm run dev",
+    "debug": "npm run build & npm run inspect",
+    "build": "tsc",
+    "dev": "npx fastmcp dev dist/index.js",
+    "inspect": "npx fastmcp inspect dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ytzlax/firebase-realtimeDB-mcp.git"
+  },
+  "author": "ytzlax",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ytzlax/firebase-realtimeDB-mcp/issues"
+  },
+  "homepage": "https://github.com/ytzlax/firebase-realtimeDB-mcp#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "fastmcp": "^1.27.6",
+    "firebase-admin": "^13.4.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/inspector": "^0.11.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.0",
+    "valibot": "^1.0.0",
+    "vitest": "^3.1.2"
+  },
+  "tsup": {
+    "entry": [
+      "src/FastMCP.ts",
+      "src/bin/fastmcp.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "dts": true,
+    "splitting": true,
+    "sourcemap": true,
+    "clean": true
+  }
+}
