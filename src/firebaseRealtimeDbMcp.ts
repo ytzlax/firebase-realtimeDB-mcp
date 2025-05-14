@@ -1,6 +1,6 @@
 import { FastMCP } from "fastmcp";
 import { z } from "zod";
-import { FirebaseApp } from "./firebaseApp";
+import { FirebaseApp } from "./firebaseApp.js";
 
 export class FirebaseRealtimeDbMcp {
     private server: FastMCP;

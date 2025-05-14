@@ -1,4 +1,4 @@
-import { FirebaseRealtimeDbMcp } from "./firebaseRealtimeDbMcp"
+import { FirebaseRealtimeDbMcp } from "./firebaseRealtimeDbMcp.js"
 import dotenv from 'dotenv';
 dotenv.config();
 
