@@ -31,16 +31,20 @@ export class FirebaseRealtimeDbMcp {
                 field: z.string(),
                 value: z.string()
             }),
-            execute: async (args) => {
+            execute: async (args, { log }) => {
+                log.debug(`collectionName:${args.collectionName},field: ${args.field}, value:${args.value}`);
                 const res = await this.firebaseApp.getDocsByField(args.collectionName, args.field, args.value);
-                return JSON.stringify(res as any);
+                const resAsString = JSON.stringify(res as any)
+                log.debug(resAsString)
+                return resAsString;
             },
         });
 
         this.server.addTool({
             name: "list_collections",
             description: "List collections",
-            execute: async (args) => {
+            execute: async (args, { log }) => {
+                log.debug(`list_collections`);
                 const res = await this.firebaseApp.listTopLevelCollections();
                 return JSON.stringify(res as any);
             },
@@ -52,7 +56,7 @@ export class FirebaseRealtimeDbMcp {
             parameters: z.object({
                 value: z.string()
             }),
-            execute: async (args) => {
+            execute: async (args, { log }) => {
                 const res = await this.firebaseApp.searchValueInRealtimeDB(args.value);
                 return JSON.stringify(res as any);
             },
@@ -65,9 +69,9 @@ export class FirebaseRealtimeDbMcp {
                 collectionName: z.string(),
                 value: z.object({})
             }),
-            execute: async (args) => {
+            execute: async (args, { log }) => {
                 const res = await this.firebaseApp.addDocumentToCollection(args.collectionName, args.value);
-                return "Added";
+                return res as string;
             },
         });
 
