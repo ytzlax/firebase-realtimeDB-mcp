@@ -1,8 +1,8 @@
 # Firebase Realtime Database MCP
 
 ## Overview
-The inspiration for this project was taken from [firebase-mcp](https://github.com/gannonh/firebase-mcp). Unlike firebase-mcp, which uses Firestore functionalities, firebase-realtimeDB-mcp uses Firebase Realtime Database functionalities.
-**Firebase Realtime Database MCP** enables AI assistants to work directly with Firebase services,
+The inspiration for this project was taken from [firebase-mcp](https://github.com/gannonh/firebase-mcp). Unlike firebase-mcp, which uses Firestore functionalities, **firebase-realtimeDB-mcp** uses Firebase Realtime Database functionalities.
+Firebase Realtime Database MCP enables AI assistants to work directly with Firebase services.
 
 ## 🔧 Setup & Configuration
 
