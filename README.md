@@ -27,8 +27,8 @@ Firebase Realtime Database MCP enables AI assistants to work directly with Fireb
 
 ### 1. Install Firebase Realtime Database MCP project locally
 
-A. Run ```git clone https://github.com/ytzlax/firebase-realtimeDB-mcp.git``` in the terminal
-B. cd to the cloned path, and run ```npm i```.
+A. Run ```git clone https://github.com/ytzlax/firebase-realtimeDB-mcp.git``` in the terminal.  
+B. cd to the cloned path, and run ```npm i```.  
 C. Run ```npm run build```.
 
 ### 2. Install MCP Server
