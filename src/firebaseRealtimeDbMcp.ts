@@ -51,27 +51,25 @@ export class FirebaseRealtimeDbMcp {
         });
 
         this.server.addTool({
-            name: "search_doc",
-            description: "Search doc",
-            parameters: z.object({
-                value: z.string()
-            }),
-            execute: async (args, { log }) => {
-                const res = await this.firebaseApp.searchValueInRealtimeDB(args.value);
-                return JSON.stringify(res as any);
-            },
-        });
-
-        this.server.addTool({
             name: "add_doc",
             description: "Add new document",
             parameters: z.object({
                 collectionName: z.string(),
-                value: z.object({})
+                value: z.any()
             }),
             execute: async (args, { log }) => {
-                const res = await this.firebaseApp.addDocumentToCollection(args.collectionName, args.value);
-                return res as string;
+                let res;
+                try {
+                    log.debug(`collectionName:${args.collectionName}, value: ${JSON.stringify(args.value)}`);
+                    res = await this.firebaseApp.addDocumentToCollection(args.collectionName, args.value);
+                }
+                catch (e) {
+                    res = (e as Error).message
+                    log.error(res)
+                }
+                finally {
+                    return res as string;
+                }
             },
         });
 
