@@ -54,28 +54,20 @@ export class FirebaseApp {
         });
     }
 
-    listDocs(collection: string, filterField: string, filterValue: any) {
+    async addDocumentToCollection(collectionName: string, doc: any) {
         return new Promise(async (resolve, reject) => {
             try {
-                let ref = this.db.ref(collection);
-                let query;
+                const ref = this.db.ref(collectionName);
+                const newDocRef = ref.push(); // generates a unique ID
+                await newDocRef.set(doc);
+                resolve(newDocRef.key);
 
-                if (filterField && filterValue !== undefined) {
-                    query = ref.orderByChild(filterField).equalTo(filterValue);
-                }
-
-                const snapshot = await query!.once('value');
-                const data = snapshot.val();
-
-                if (!data) {
-                    resolve({});
-                }
-
-                resolve(data);
             } catch (error) {
-                reject(error);
+                reject((error as Error).message);
             }
+
         });
     }
+
 }
 
