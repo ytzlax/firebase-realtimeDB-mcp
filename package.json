@@ -5,10 +5,10 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "start": "npm run build & npm run dev",
-    "debug": "npm run build & npm run inspect",
+    "start": "npm run build & npm run inspect",
+    "start:cli": "npm run build & npm run cli",
     "build": "tsc",
-    "dev": "npx fastmcp dev dist/index.js",
+    "cli": "npx fastmcp dev dist/index.js",
     "inspect": "npx fastmcp inspect dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
