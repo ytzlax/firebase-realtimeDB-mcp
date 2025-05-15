@@ -93,10 +93,18 @@ export class FirebaseApp {
     }
 
     async addDocumentToCollection(collectionName: string, doc: any) {
-        const ref = this.db.ref(collectionName);
-        const newDocRef = ref.push(); // generates a unique ID
-        await newDocRef.set(doc);
-        return newDocRef.key;
+        return new Promise(async (resolve, reject) => {
+            try {
+                const ref = this.db.ref(collectionName);
+                const newDocRef = ref.push(); // generates a unique ID
+                await newDocRef.set(doc);
+                return newDocRef.key;
+
+            } catch (error) {
+                reject((error as Error).message);
+            }
+
+        });
     }
 
 }
