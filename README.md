@@ -1,4 +1,7 @@
 # Firebase Realtime Database MCP
+<a href="https://glama.ai/mcp/servers/@ytzlax/firebase-realtimeDB-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@ytzlax/firebase-realtimeDB-mcp/badge" />
+</a>  
 
 ## Overview
 
