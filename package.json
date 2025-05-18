@@ -1,5 +1,5 @@
 {
-  "name": "firebase-realtimedb-mcp",
+  "name": "@ytzlax/firebase-realtimedb-mcp",
   "version": "1.0.0",
   "description": "MCP server for firebase realtime DB",
   "main": "index.ts",
